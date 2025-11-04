@@ -12,6 +12,8 @@ EXTRA_OEMAKE += "LDFLAGS='${LDFLAGS}'"
 
 DEPENDS = "portaudio-v19 fftw"
 
+RDEPENDS:${PN} = "portaudio-v19"
+
 do_install() {
     install -d ${D}${bindir}
     install build/conv-rev ${D}${bindir}/conv-rev

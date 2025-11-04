@@ -8,10 +8,11 @@ PV = "1.0+git"
 
 S = "${WORKDIR}/git"
 
-RDEPENDS = "rt-tests gnuplot stress-ng"
+RDEPENDS:${PN} = "rt-tests gnuplot stress-ng"
 
 do_install() {
     install -d ${D}${bindir}
+    install -d ${D}/etc
     install run-benchmark ${D}${bindir}
     install gen-hist ${D}${bindir}
     install plot-settings ${D}/etc/
