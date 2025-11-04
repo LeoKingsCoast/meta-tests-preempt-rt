@@ -16,6 +16,7 @@ IMAGE_LINGUAS = "en-us"
 BASIC_PKGS ?= "bash coreutils less net-tools util-linux vim"
 APP_PKGS ?= "portaudio-v19 libgpiod"
 RT_TEST_PKGS ?= "rt-tests"
+CUSTOM_PKGS ?= "convolution-reverb gpio-toggle rt-test-scripts"
 
 CONMANPKGS ?= "connman connman-plugin-loopback connman-plugin-ethernet connman-plugin-wifi connman-client"
 
@@ -42,6 +43,7 @@ IMAGE_INSTALL:append = " \
     ${BASIC_PKGS} \
     ${APP_PKGS} \
     ${CONMANPKGS} \
+    ${CUSTOM_PKGS} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'timestamp-service systemd-analyze', '', d)} \
     media-files \
 "
