@@ -13,7 +13,8 @@ RDEPENDS:${PN} = "rt-tests gnuplot stress-ng"
 do_install() {
     install -d ${D}${bindir}
     install -d ${D}/etc
-    install run-benchmark ${D}${bindir}
-    install gen-hist ${D}${bindir}
-    install plot-settings ${D}/etc/
+    install -m 0755 run-benchmark ${D}${bindir}
+    install -m 0755 run-stress ${D}${bindir}
+    install -m 0755 gen-hist ${D}${bindir}
+    install -m 0755 plot-settings ${D}/etc/
 }
