@@ -12,11 +12,15 @@ EXTRA_OEMAKE += "LDFLAGS='${LDFLAGS}'"
 
 DEPENDS = "portaudio-v19 fftw"
 
-RDEPENDS:${PN} = "portaudio-v19"
+RDEPENDS:${PN} = "portaudio-v19 libcap-bin"
 
 do_install() {
     install -d ${D}${bindir}
     install build/conv-rev ${D}${bindir}/conv-rev
+}
+
+pkg_postinst_${PN} () {
+    setcap cap_ipc_lock=+ep ${D}${bindir}/conv-rev
 }
 
 FILES_${PN} += "${bindir}/conv-rev"

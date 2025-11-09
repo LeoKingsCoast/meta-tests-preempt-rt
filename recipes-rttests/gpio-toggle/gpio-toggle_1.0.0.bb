@@ -8,7 +8,13 @@ PV = "1.0+git"
 
 S = "${WORKDIR}/git"
 
+RDEPENDS:${PN} = "libcap-bin"
+
 do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${S}/gpio-toggle ${D}${bindir}
+}
+
+pkg_postinst_${PN} () {
+    setcap cap_ipc_lock=+ep ${D}${bindir}/gpio-toggle
 }
