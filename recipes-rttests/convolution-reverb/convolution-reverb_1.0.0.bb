@@ -10,9 +10,9 @@ S = "${WORKDIR}/git"
 
 EXTRA_OEMAKE += "LDFLAGS='${LDFLAGS}'"
 
-DEPENDS = "portaudio-v19 fftw"
+DEPENDS = "portaudio-v19 fftw libsndfile1"
 
-RDEPENDS:${PN} = "portaudio-v19 libcap-bin"
+RDEPENDS:${PN} = "portaudio-v19 libsndfile1 libcap-bin"
 
 do_install() {
     install -d ${D}${bindir}
